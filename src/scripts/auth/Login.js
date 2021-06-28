@@ -24,6 +24,17 @@ applicationElement.addEventListener("click", (clickEvent) => {
     }
 })
 
+applicationElement.addEventListener("click", clickEvent => {
+
+
+    if (clickEvent.target.id === "logout") {
+
+        localStorage.removeItem("gg_user")
+        document.querySelector(".giffygram")
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
 export const LoginForm = () => {
     return `
         <div class="loginForm">
