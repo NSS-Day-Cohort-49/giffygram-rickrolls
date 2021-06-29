@@ -1,8 +1,18 @@
+export const refreshPage = () => {
+    const refreshLogo = document.querySelector("#giffyGram");
+
+    refreshLogo.addEventListener('click', (clickEvent) => {
+        if (clickEvent.target.id === "logo") {
+            location.reload();
+        }
+    })
+}
+
 export const NavBar = () => {
     return `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
-                <img src="/images/pb.png" alt="Giffygram icon" id="logo">
+                <img src="/images/pb.png" alt="Giffygram icon" id="logo" ${refreshPage()}>
             </div>
             <div class="navigation__item navigation__name">
                 Giffygram
