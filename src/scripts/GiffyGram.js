@@ -9,13 +9,19 @@ export const GiffyGram = () => {
             ${NavBar()}
         </section>
 
-        <section>
-            <div class="giffygram__feed">
-            ${CreatePost()}
-        </section
+        <div class="giffygram__feed">
+            <section>
+                ${CreatePost()}
+            </section>
+
+            <section class="post">
+
+            </section>  
+        </div>                 
+
 
         <section>
             ${Footer()}
-        </section
+        </section>
     `
 }
