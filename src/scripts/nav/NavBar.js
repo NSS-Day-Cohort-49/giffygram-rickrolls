@@ -12,7 +12,7 @@ export const NavBar = () => {
     return `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
-                <img src="/images/pb.png" alt="Giffygram icon" id="logo" ${refreshPage()}>
+                <img src="/images/pb.png" alt="Giffygram icon" id="logo" >
             </div>
             <div class="navigation__item navigation__name">
                 Giffygram
