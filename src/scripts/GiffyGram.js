@@ -15,7 +15,7 @@ export const GiffyGram = () => {
             </section>
 
             <section class="post">
-
+                
             </section>  
         </div>                 
 
