@@ -7,6 +7,19 @@ applicationElement.addEventListener("click", (clickEvent) => {
     }
 })
 
+applicationElement.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "newPost__cancel") {
+        CreatePost = () => {
+            return `
+                <div class="miniMode" id="miniMode">
+                    Have a gif to post?
+                </div>
+            `
+        }
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
 export let CreatePost = () => {
     return `
         <div class="miniMode" id="miniMode">
