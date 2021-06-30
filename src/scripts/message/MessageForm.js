@@ -1,26 +1,24 @@
 export const MessageForm = () => {
     return `
-        <nav class="navigation">
-            <div class="navigation__item navigation__icon">
-                <img src="/images/pb.png" alt="Giffygram icon" id="logo" >
-            </div>
-            <div class="navigation__item navigation__name">
-                Giffygram
-            </div>
-            <div class="navigation__item navigation__search">
+        <div class="directMessage">
+        <h3>Direct Message</h3>
+        <div>Recipient:
+            <select name="directMessage__userSelect" class="message__input">
+                <option>Choose a recipient...</option>
+                <option value="messageRecipient--1">1</option>,<option value="messageRecipient--2">2</option>,<option value="messageRecipient--3">3</option>,<option value="messageRecipient--4">4</option>,<option value="messageRecipient--5">5</option>,<option value="messageRecipient--6">6</option>
+            </select>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <input name="message" class="message__input" type="text" placeholder="Message to user">
+        </div>
 
-            </div>
-            <div class="navigation__item navigation__message">
-                <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
-                <div class="notification__count">
-                    0
-                </div>
-            </div>
-            <div class="navigation__item navigation__logout">
-                <button id="logout" class="fakeLink">Logout</button>
-            </div>
-            
-        </nav>
+        <button id="directMessage__submit">Save</button>
+        <button id="directMessage__cancel">Cancel</button>
+
+        <button id="directMessage__close">x</button>
+
+    </div>
 
 `
 }
