@@ -19,6 +19,7 @@ applicationElement.addEventListener("click", (clickEvent) => {
         if (foundUser !== null) {
             localStorage.setItem("gg_user", foundUser.id)
             document.querySelector(".giffygram")
+            window.location.reload();
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
@@ -31,6 +32,7 @@ applicationElement.addEventListener("click", clickEvent => {
 
         localStorage.removeItem("gg_user")
         document.querySelector(".giffygram")
+        window.location.reload();
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })

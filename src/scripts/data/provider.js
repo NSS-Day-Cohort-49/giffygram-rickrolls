@@ -56,6 +56,14 @@ export const getPosts = () => [...applicationState.posts]
 export const getLikes = () => [...applicationState.likes]
 export const getMessages = () => [...applicationState.messages]
 
+export const deletePosts = (id) => {
+    return fetch(`${API}/posts/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
 export const sendPosts = (userPosts) => {
     const fetchOptions = {
         method: "POST",
