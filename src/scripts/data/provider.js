@@ -64,3 +64,17 @@ export const deletePosts = (id) => {
             }
         )
 }
+export const sendPosts = (userPosts) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userPosts),
+    }
+    return fetch(`${API}/posts`, fetchOptions)
+        .then((response) => response.json())
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}

@@ -1,3 +1,5 @@
+import { sendPosts } from "../data/provider.js"
+
 const applicationElement = document.querySelector("#giffyGram")
 
 applicationElement.addEventListener("click", (clickEvent) => {
@@ -5,9 +7,6 @@ applicationElement.addEventListener("click", (clickEvent) => {
         CreatePost = () => NewPost()
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
-})
-
-applicationElement.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.id === "newPost__cancel") {
         CreatePost = () => {
             return `
@@ -17,6 +16,31 @@ applicationElement.addEventListener("click", (clickEvent) => {
             `
         }
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
+applicationElement.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "newPost__submit") {
+        const user = parseInt(localStorage.getItem("gg_user"))
+        const userTitle = document.querySelector(
+            "input[name='postTitle']"
+        ).value
+        const userImageURL = document.querySelector(
+            "input[name='postURL']"
+        ).value
+        const userDescription = document.querySelector(
+            "textarea[name='postDescription']"
+        ).value
+
+        const dataToSendToAPI = {
+            userId: user,
+            title: userTitle,
+            imageURL: userImageURL,
+            description: userDescription,
+            timestamp: Date.now(),
+        }
+
+        sendPosts(dataToSendToAPI)
     }
 })
 
