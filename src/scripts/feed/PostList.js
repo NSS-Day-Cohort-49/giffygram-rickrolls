@@ -28,6 +28,19 @@ export const PostList = () => {
     const postItems = posts.map(post => {
 
 
+
+
+        function deleteFunction () {
+            if (post.userId === localId) {
+                let deleteDisplay = `${`<img id="blockPost--${post.id}" class="actionIcon" src="/images/block.svg"></img>`}`
+                return deleteDisplay
+            } else {
+                return ""
+            }
+        }
+
+
+
         const findUser = users.find((user)=> {
             if (post.userId === user.id) {
                 return true
@@ -57,7 +70,7 @@ export const PostList = () => {
             <img id="favoritePost--${post.id}" class="actionIcon" src="/images/favorite-star-yellow.svg">
         </div>
         <div>
-            ${`<img id="blockPost--${post.id}" class="actionIcon" src="/images/block.svg"></img>`}
+        ${deleteFunction()}
 
         </div>
     </div>`
