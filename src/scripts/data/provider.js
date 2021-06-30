@@ -55,3 +55,18 @@ export const getUsers = () => [...applicationState.users]
 export const getPosts = () => [...applicationState.posts]
 export const getLikes = () => [...applicationState.likes]
 export const getMessages = () => [...applicationState.messages]
+
+export const sendPosts = (userPosts) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userPosts),
+    }
+    return fetch(`${API}/posts`, fetchOptions)
+        .then((response) => response.json())
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
