@@ -1,48 +1,48 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Tristan",
-            "email": "tristan@email.com",
-            "password": "tristan"
-        },
-        {
-            "id": 2,
-            "name": "Ian",
-            "email": "ian@email.com",
-            "password": "ian"
-        },
-        {
-            "id": 3,
-            "name": "Everett",
-            "email": "everett@email.com",
-            "password": "everett"
-        }
-    ],
-    "posts": [
-        {
-            "id": 3,
-            "userId": 2,
-            "title": "Graduation!",
-            "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
-            "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
-            "timestamp": 1528720619498
-        }
-    ],
-    "messages": [
-        {
-            "userId": 2,
-            "recipientId": 3,
-            "text": "Selvage la croix prism truffaut cray offal lumbersexual bespoke skateboard. Next level chia enamel pin, wayfarers copper mug jean shorts leggings.",
-            "read": false,
-            "id": 1
-        }
-    ],
-    "likes": [
-        {
-            "userId": 3,
-            "postId": 4,
-            "id": 4
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Tristan",
+      "email": "tristan@email.com",
+      "password": "tristan"
+    },
+    {
+      "id": 2,
+      "name": "Ian",
+      "email": "ian@email.com",
+      "password": "ian"
+    },
+    {
+      "id": 3,
+      "name": "Everett",
+      "email": "everett@email.com",
+      "password": "everett"
+    }
+  ],
+  "posts": [
+    {
+      "id": 4,
+      "userId": 2,
+      "title": "Graduation!",
+      "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
+      "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
+      "timestamp": 1528720619498
+    }
+  ],
+  "messages": [
+    {
+      "userId": 2,
+      "recipientId": 3,
+      "text": "Selvage la croix prism truffaut cray offal lumbersexual bespoke skateboard. Next level chia enamel pin, wayfarers copper mug jean shorts leggings.",
+      "read": false,
+      "id": 1
+    }
+  ],
+  "likes": [
+    {
+      "userId": 3,
+      "postId": 4,
+      "id": 4
+    }
+  ]
 }
