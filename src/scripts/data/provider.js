@@ -55,6 +55,7 @@ export const getUsers = () => [...applicationState.users]
 export const getPosts = () => [...applicationState.posts]
 export const getLikes = () => [...applicationState.likes]
 export const getMessages = () => [...applicationState.messages]
+export const getFeed = () => [...applicationState.feed]
 
 export const deletePosts = (id) => {
     return fetch(`${API}/posts/${id}`, { method: "DELETE" })
@@ -74,6 +75,32 @@ export const sendPosts = (userPosts) => {
     }
     return fetch(`${API}/posts`, fetchOptions)
         .then((response) => response.json())
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
+export const deleteLikes = (id) => {
+    return fetch(`${API}/likes/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+export const sendLikes = (userServiceRequest) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userServiceRequest)
+    }
+
+
+    return fetch(`${API}/likes`, fetchOptions)
+        .then(response => response.json())
         .then(() => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         })

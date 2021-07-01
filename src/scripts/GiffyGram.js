@@ -12,7 +12,7 @@ export const GiffyGram = () => {
         </section>
 
         <div class="giffygram__feed">
-            <section>
+            <section>          
                 ${CreatePost()}
             </section>
 
