@@ -22,7 +22,7 @@ export const NavBar = () => {
             </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
-                <div class="notification__count">
+                <div id="notifications" class="notification__count">
                     0
                 </div>
             </div>
