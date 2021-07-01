@@ -105,3 +105,20 @@ export const sendLikes = (userServiceRequest) => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
+export const sendMessages = (userServiceRequest) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userServiceRequest)
+    }
+
+
+    return fetch(`${API}/messages`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}

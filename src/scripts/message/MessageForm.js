@@ -1,3 +1,7 @@
+import { getUsers, sendMessages } from "../data/provider.js"
+
+let localId = parseInt(localStorage.getItem("gg_user"))
+
 const applicationElement = document.querySelector("#giffyGram")
 
 applicationElement.addEventListener("click", (clickEvent) => {
@@ -27,13 +31,18 @@ export let BlankMessage = () => {
 }
 
 export let DirectMessage = () => {
+    let users = getUsers()
     return `
     <div class="directMessage">
     <h3>Direct Message</h3>
     <div>Recipient:
-        <select name="directMessage__userSelect" class="message__input">
+        <select name="directMessage__userSelect" id="message__input" >
             <option>Choose a recipient...</option>
-            <option value="messageRecipient--1">1</option>,<option value="messageRecipient--2">2</option>,<option value="messageRecipient--3">3</option>,<option value="messageRecipient--4">4</option>,<option value="messageRecipient--5">5</option>,<option value="messageRecipient--6">6</option>
+            ${users
+                .map((user) => {
+                    return `<option value="${user.id}">${user.name}</option>`
+                })
+                .join("")} 
         </select>
     </div>
     <div>
@@ -50,3 +59,22 @@ export let DirectMessage = () => {
     `;
 }
 
+applicationElement.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "directMessage__submit") {
+        const userText = document.querySelector(
+            "input[name='message']"
+        ).value
+
+        const recipientId = document.getElementById("message__input").value
+
+
+        const dataToSendToAPI = {
+            userId: localId,
+            text: userText,
+            read: false,
+            recipientId: parseInt(recipientId)
+        }
+
+        sendMessages(dataToSendToAPI)
+    }
+})

@@ -15,16 +15,6 @@ export const PostList = () => {
     const likes = getLikes()
     const users = getUsers()
 
-    /* const findDelete = posts.find(post => {
-        if (post.userId === localId){
-            return `<img id="blockPost--${post.Id}" class="actionIcon" src="/images/block.svg"></img>`
-        }
-    }) */
-
-    
-
-
-
     let html = '<ul>'
 
     const postItems = posts.map(post => {
