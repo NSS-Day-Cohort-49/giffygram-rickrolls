@@ -1,9 +1,10 @@
-import { getPosts, getUsers, deletePosts } from "../data/provider.js"
+import { getPosts, getUsers, deletePosts, deleteLikes, sendLikes } from "../data/provider.js"
 import { getLikes } from "../data/provider.js"
 
 let localId = parseInt(localStorage.getItem("gg_user"))
 
 const applicationElement = document.querySelector("#giffyGram")
+
 
 export const PostList = () => {
 
@@ -20,15 +21,13 @@ export const PostList = () => {
         }
     }) */
 
+    
 
 
 
     let html = '<ul>'
 
     const postItems = posts.map(post => {
-
-
-
 
         function deleteFunction () {
             if (post.userId === localId) {
@@ -39,7 +38,21 @@ export const PostList = () => {
             }
         }
 
+        const findLikes = likes.find((like)=>{
+            return like.userId === localId && like.postId === post.id
+                
+            })
 
+        let likeId = findLikes
+
+        function likesFunction () {
+            if (findLikes != undefined) {
+                let liked = `<img id="favoritePost--${likeId.id}" class="actionIcon" src="/images/favorite-star-yellow.svg">`
+                return liked
+            } else {
+                return `<img id="notFavoritePost--${post.id}--${localId}" class="actionIcon" src="/images/favorite-star-blank.svg">`
+            }
+        }
 
         const findUser = users.find((user)=> {
             if (post.userId === user.id) {
@@ -47,8 +60,6 @@ export const PostList = () => {
             }})
 
         let foundUser = findUser.name
-
-
 
         
         return `<header>
@@ -67,7 +78,7 @@ export const PostList = () => {
     </div>
     <div class="post__actions">
         <div>
-            <img id="favoritePost--${post.id}" class="actionIcon" src="/images/favorite-star-yellow.svg">
+            ${likesFunction()}
         </div>
         <div>
         ${deleteFunction()}
@@ -91,3 +102,26 @@ applicationElement.addEventListener("click", click => {
     }
 })
 
+
+applicationElement.addEventListener("click", click => {
+    if (click.target.id.startsWith("favoritePost--")) {
+        const [,postId] = click.target.id.split("--")
+        deleteLikes(parseInt(postId))
+    }
+})
+
+applicationElement.addEventListener("click", click => {
+
+    if (click.target.id.startsWith("notFavoritePost--")) {
+            const [,pId,uId] = click.target.id.split("--")
+
+            const nowLike = {
+                postId: parseInt(pId),
+                userId: parseInt(uId)
+            }
+            
+
+            sendLikes(nowLike)
+
+        }})
+ 
