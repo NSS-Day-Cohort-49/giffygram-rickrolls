@@ -1,5 +1,5 @@
 import { NavBar, refreshPage } from "./nav/NavBar.js"
-import { BlankMessage } from "./friends/DirectMessage.js"
+import { BlankMessage } from "./message/MessageForm.js"
 import { Footer } from "./nav/Footer.js"
 import { CreatePost } from "./feed/CreatePost.js"
 import { PostList } from "./feed/PostList.js"
