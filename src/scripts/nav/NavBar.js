@@ -8,7 +8,21 @@ export const refreshPage = () => {
     })
 }
 
+import { getMessages} from "../data/provider.js"
+
+let localId = parseInt(localStorage.getItem("gg_user"))
+
 export const NavBar = () => {
+
+    const messages = getMessages()
+
+    let counter = 0
+    for (const message of messages) {
+        if ( message.recipientId === localId  && message.read === false){
+            counter ++
+        }
+    }
+
     return `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
@@ -23,7 +37,7 @@ export const NavBar = () => {
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
                 <div id="notifications" class="notification__count">
-                    0
+                    ${counter}
                 </div>
             </div>
             <div class="navigation__item navigation__logout">
