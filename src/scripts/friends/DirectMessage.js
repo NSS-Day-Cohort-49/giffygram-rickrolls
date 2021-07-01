@@ -1,97 +1,52 @@
-/*
-import { MessageForm } from "../message/MessageForm.js";
-import { PrivateMessage } from "../message/PrivateMessages.js";
-
-export const DirectMessage = () => {
-    const clickPen = document.querySelector("#giffyGram")
-
-    clickPen.addEventListener('click', (clickEvent) => {
-        if (clickEvent.target.id === "directMessageIcon") {
-            //TODO: Logic?
-            let CreatePost = () => {
-                return `
-                    <div class="miniMode" id="miniMode">
-                        Have a gif to post?
-                    </div>
-                `
-            }
-            // clickPen.innerHTML += MessageForm() //! Not working
-        }
-    })
-}
-
-export const Notifications = () => {
-    const notifications = document.querySelector("#giffyGram")
-
-    notifications.addEventListener('click', (clickEvent) => {
-        if (clickEvent.target.id === "notifications") {
-            //TODO: Logic?
-            // notifications.innerHTML += PrivateMessage() //! Not working
-        }
-    })
-}
-*/
-
-
-
 const applicationElement = document.querySelector("#giffyGram")
 
 applicationElement.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.id === "miniMode") {
-        CreatePost = () => NewPost()
+    if (clickEvent.target.id === "directMessageIcon") {
+        BlankMessage = () => DirectMessage()
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
-    if (clickEvent.target.id === "directMessageIcon") {
-        CreatePost = () => {
+    if (clickEvent.target.id === "directMessage__close" || clickEvent.target.id === "directMessage__cancel") {
+        BlankMessage = () => {
             return `
-                
+            <div>
+
+            </div>
             `
         }
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
-applicationElement.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.id === "newPost__submit") {
-        const user = parseInt(localStorage.getItem("gg_user"))
-        const userTitle = document.querySelector(
-            "input[name='postTitle']"
-        ).value
-        const userImageURL = document.querySelector(
-            "input[name='postURL']"
-        ).value
-        const userDescription = document.querySelector(
-            "textarea[name='postDescription']"
-        ).value
 
-
-
-    }
-})
-
-export let CreatePost = () => {
+export let BlankMessage = () => {
     return `
-        <div class="miniMode" id="miniMode">
-            Have a gif to post?
+        <div id="miniMode">
+
         </div>
     `
 }
 
-export let NewPost = () => {
+export let DirectMessage = () => {
     return `
-        <div class="newPost">
-            <div>
-                <input value="" name="postTitle" class="newPost__input" type="text" placeholder="Title">
-                </div>
-            <div>
-                <input value="" name="postURL" class="newPost__input" type="text" placeholder="URL of gif">
-            </div>
+    <div class="directMessage">
+    <h3>Direct Message</h3>
+    <div>Recipient:
+        <select name="directMessage__userSelect" class="message__input">
+            <option>Choose a recipient...</option>
+            <option value="messageRecipient--1">1</option>,<option value="messageRecipient--2">2</option>,<option value="messageRecipient--3">3</option>,<option value="messageRecipient--4">4</option>,<option value="messageRecipient--5">5</option>,<option value="messageRecipient--6">6</option>
+        </select>
+    </div>
+    <div>
+        <label for="message">Message:</label>
+        <input name="message" class="message__input" type="text" placeholder="Message to user">
+    </div>
 
-            <textarea name="postDescription" class="newPost__input newPost__description" placeholder="Story behind your gif..."></textarea>
+    <button id="directMessage__submit">Save</button>
+    <button id="directMessage__cancel">Cancel</button>
 
-            <button id="newPost__submit">Save</button>
-            <button id="newPost__cancel">Cancel</button>
-        </div>
-    `
+    <button id="directMessage__close">x</button>
+
+</div>
+    `;
 }
 

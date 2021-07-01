@@ -1,6 +1,5 @@
 import { NavBar, refreshPage } from "./nav/NavBar.js"
-import { DirectMessage, Notifications } from "./friends/DirectMessage.js"
-import { MessageForm } from "./message/MessageForm.js"
+import { BlankMessage } from "./friends/DirectMessage.js"
 import { Footer } from "./nav/Footer.js"
 import { CreatePost } from "./feed/CreatePost.js"
 import { PostList } from "./feed/PostList.js"
@@ -10,8 +9,7 @@ export const GiffyGram = () => {
     return `
         <section>        
         ${refreshPage()}
-        ${DirectMessage()}
-        ${Notifications()}
+        ${BlankMessage()}
             ${NavBar()}
         </section>
 
