@@ -12,7 +12,7 @@ export const PrivateMessage = () => {
     let html = '<ul>'
 
     const currentMessages = messages.map(message => {
-        if(message.recipientId === localId){
+        if(message.recipientId === localId && message.read === false){
 
             const findUser = users.find((user)=> {
                 if (message.userId === user.id) {
