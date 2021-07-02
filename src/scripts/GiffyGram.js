@@ -12,7 +12,7 @@ applicationElement.addEventListener("click", (clickEvent) => {
         GiffyGram = () => MessagePage()
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
-    if (clickEvent.target.id === "profile--1") {
+    if (clickEvent.target.id.startsWith("profile--")) {
         GiffyGram = () => UserPages()
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
