@@ -32,12 +32,15 @@ applicationElement.addEventListener("click", (clickEvent) => {
             "textarea[name='postDescription']"
         ).value
 
+        let today = new Date()
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+
         const dataToSendToAPI = {
             userId: user,
             title: userTitle,
             imageURL: userImageURL,
             description: userDescription,
-            timestamp: Date.now(),
+            timestamp: date,
         }
 
         sendPosts(dataToSendToAPI)
