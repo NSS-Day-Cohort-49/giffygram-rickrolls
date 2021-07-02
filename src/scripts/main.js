@@ -6,6 +6,7 @@ import {
     fetchPosts,
     fetchUsers,
 } from "./data/provider.js"
+import { Register } from "./auth/Register.js"
 
 const applicationElement = document.querySelector("#giffyGram")
 
@@ -23,7 +24,13 @@ const renderApp = () => {
                 applicationElement.innerHTML = LoginForm()
             }
         })
-}
+        .then(applicationElement.addEventListener("click", (clickEvent) => {
+            if (clickEvent.target.id === "registerButton") {
+                applicationElement.innerHTML = Register()
+            }
+        }))
+    }
+
 
 renderApp()
 
