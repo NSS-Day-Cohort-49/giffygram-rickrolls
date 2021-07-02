@@ -1,7 +1,7 @@
 .footer {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: start;
+    justify-content: space-evenly;
     border-bottom: 1px solid lightblue;
     padding: 0.5em 0 0.5em 1em;
     margin-bottom: 2em;
@@ -9,7 +9,8 @@
     z-index: 11;
     bottom: 0;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: gray;
+    color: white;
     margin: auto;
 }
 

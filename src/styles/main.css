@@ -1,14 +1,18 @@
-@import 'navigation.css';
-@import 'footer.css';
-@import 'feed.css';
-@import 'post.css';
-@import 'updates.css';
-@import 'message.css';
+@import "navigation.css";
+@import "footer.css";
+@import "feed.css";
+@import "post.css";
+@import "updates.css";
+@import "message.css";
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
 /*Typography
 --------------------------------------------------------------*/
 
-body, button, input, select, textarea {
+body,
+button,
+input,
+select,
+textarea {
     color: #404040;
     font-family: "Comfortaa", Arial, sans-serif;
     font-size: 1rem;
@@ -17,7 +21,12 @@ body, button, input, select, textarea {
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Patua One", serif;
     letter-spacing: 2px;
 }
@@ -33,11 +42,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fakeLink {
-    color: -webkit-link;
+    color: black;
+    text-decoration: none;
     cursor: pointer;
-    text-decoration: underline;
-    background: none!important;
+    background: none !important;
     border: none;
+    margin-right: 2em;
     cursor: pointer;
 }
 
