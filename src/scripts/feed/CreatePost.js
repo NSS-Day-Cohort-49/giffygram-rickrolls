@@ -1,4 +1,4 @@
-import { sendPosts } from "../data/provider.js"
+import { getPosts, getUsers, sendPosts } from "../data/provider.js"
 
 const applicationElement = document.querySelector("#giffyGram")
 
@@ -71,19 +71,20 @@ export let NewPost = () => {
 }
 
 export let UserProfile = () => {
-    return `
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    const users = getUsers()
+    const posts = getPosts()
 
-        <div class="card">
-          <img src="img.jpg" alt="John" style="width:100%">
-          <h1>John Doe</h1>
-          <p class="title">CEO & Founder, Example</p>
-          <p>Harvard University</p>
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <p><button>Contact</button></p>
-        </div>
+    for (const post of posts) {
+        for (const user of users) {
+            if (user.id === post.userId) {
+                return `
+            <div class="card">
+            <h1>${user.name}</h1>
+            <p class="title">CEO & Founder</p>
+            <p>Harvard University</p>
+            </div>
     `
+            }
+        }
+    }
 }
