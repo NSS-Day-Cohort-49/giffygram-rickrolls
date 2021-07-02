@@ -1,23 +1,21 @@
-
 export const refreshPage = () => {
-    const refreshLogo = document.querySelector("#giffyGram");
+    const refreshLogo = document.querySelector("#giffyGram")
 
-    refreshLogo.addEventListener('click', (clickEvent) => {
+    refreshLogo.addEventListener("click", (clickEvent) => {
         if (clickEvent.target.id === "logo") {
-            location.reload();
+            location.reload()
         }
     })
 }
 
-import { getMessages, getUsers} from "../data/provider.js"
+import { getMessages, getUsers } from "../data/provider.js"
 
 let localId = parseInt(localStorage.getItem("gg_user"))
 
 export const NavBar = () => {
-
     const messages = getMessages()
     const users = getUsers()
-    
+
     let userName = null
     for (const user of users) {
         if (user.id === localId) {
@@ -27,8 +25,8 @@ export const NavBar = () => {
 
     let counter = 0
     for (const message of messages) {
-        if ( message.recipientId === localId  && message.read === false){
-            counter ++
+        if (message.recipientId === localId && message.read === false) {
+            counter++
         }
     }
 
@@ -43,6 +41,9 @@ export const NavBar = () => {
             <div class="navigation__item navigation__search">
 
             </div>
+            <div class="navigation__item navigation__loggedInUser">
+                    ${userName}
+            </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
                 
@@ -50,16 +51,11 @@ export const NavBar = () => {
                     ${counter}
                 </div>
             </div>
-            <div class="navigation__item navigation__loggedInUser">
-                    ${userName}
-                </div>
             <div class="navigation__item navigation__logout">
-                <button id="logout" class="fakeLink">Logout</button>
+                <a id="logout" class="fakeLink">Logout</a>
             </div>
             
         </nav>
 
 `
 }
-
-
