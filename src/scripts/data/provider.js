@@ -123,49 +123,6 @@ export const sendMessages = (userServiceRequest) => {
         })
 }
 
-/* export const markRead = (userServiceRequest) => {
-    const fetchOptions = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            userServiceRequest})
-    }
-
-
-    return fetch(`${API}/messages/${id}`, fetchOptions)
-        .then(response => response.json())
-        .then(() => {
-            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-        })
-} */
-
-
-/* applicationElement.addEventListener("click", click => {
-
-    if (click.target.id.startsWith("message--")) {
-            const [,pId, read, recepIt, mId] = click.target.id.split("--")                   
-            
-            if (parse(pId) === message.id){
-                
-                markRead()
-                
-            }
-            markRead()}
-
-        }) */
-
-
-/* export const markRead = (id) => {
-    return fetch(`${API}/message/${id}`, { method: "PUT" })
-        .then(
-            () => {
-                applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-            }
-        )
-} */
-
 export const markRead = (id) => {
     for(const message of applicationState.messages) {
         if(message.id === id) {

@@ -72,22 +72,3 @@ export let NewPost = () => {
         </div>
     `
 }
-
-export let UserProfile = () => {
-    const users = getUsers()
-    const posts = getPosts()
-
-    for (const post of posts) {
-        for (const user of users) {
-            if (user.id === post.userId) {
-                return `
-            <div class="card">
-            <h1>${user.name}</h1>
-            <p class="title">CEO & Founder</p>
-            <p>Harvard University</p>
-            </div>
-    `
-            }
-        }
-    }
-}
